@@ -1,0 +1,127 @@
+{{!-- CS 340 Project --}}
+{{!-- Group #97: Hayden Burgess, Quynh Nguyen --}}
+{{!-- Project Title: Tabletoppers Games --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+{{!-- orders.hbs --}}
+
+{{!-- Using jQuery to send delete request --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabletoppers Games</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+        Tabletoppers Games
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+    </h1>
+
+
+    <ul style="display: inline;">
+        <a href='/'>Home</a>
+        <a href='/board_games'>Board Games</a>
+        <a href='/customers'>Customers</a>
+        <a href='/orders'>Orders</a>
+        <a href='/order_details'>Order Details</a>
+        <a href='/warehouses'>Warehouses</a>
+    </ul>
+
+<h3>Orders</h3>
+{{!-- Create a table --}}
+<table id="order-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Order Date</th>
+            <th>Shipped Date</th>
+            <th>Order Status</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr data-value={{this.order_id}}>
+            <td>{{this.order_id}}</td>
+            <td>{{this.customer_id}}</td>
+            <td>{{this.order_date}}</td>
+            <td>{{this.shipped_date}}</td>
+            <td>{{this.order_status}}</td>
+            <td><button onclick="deleteOrder({{this.order_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<p>*Deleting an order will automatically delete corresponding order details</p>
+
+{{!-- Form to add a order to the table  --}}
+<h3>Add a Order</h3>
+<p>To add a new order, please enter the information below and click 'Add Order'!</p>
+<form id="add-order-form-ajax">
+    <label for="input-customer-id">Customer ID: </label>
+    <select name="input-customer-id" id="input-customer-id">
+        <option value="test">Select a Customer</option>
+        {{#each data}}
+        <option value="{{this.customer_id}}">{{this.customer_id}}</option>
+        {{/each}}
+    </select>
+
+    <label for="order_date">Order Date: </label>
+    <input type="date" name="order_date" id="order_date" required>
+
+    <label for="shipped_date">Shipped Date: </label>
+    <input type="date" name="shipped_date" id="shipped_date" required>
+
+    <label for="order_status">Choose a Order Status: </label>
+    <select name="order_status" id="order_status">
+    <option value="at_post_office">AT POST OFFICE</option>
+    <option value="delivered">DELIVERED</option>
+    <option value="in_transit">IN TRANSIT</option>
+    </select>
+
+    <input type="submit" value="Add Order">
+</form>
+
+<h3>Update a Order</h3>
+<form id="update-order-form-ajax">
+
+    <label for="order_id">Order ID: </label>
+    <select name="order_id" id="order_id">
+        <option value="test">Select a Order</option>
+        {{#each data}}
+        <option value="{{this.order_id}}">{{this.order_id}}</option>
+        {{/each}}
+    </select>
+
+    <label for="order_status">Order Status: </label>
+    <select name="order_status" id="order_status">
+    <option value="at_post_office">AT POST OFFICE</option>
+    <option value="delivered">DELIVERED</option>
+    <option value="in_transit">IN TRANSIT</option>
+    </select>
+
+    <input type="submit" value="Update Order">
+
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_order.js"></script>
+<script src="./js/delete_order.js"></script>
+<script src="./js/update_order.js"></script>
+
+<footer>
+    <p>Tabletoppers Games &copy; 2023 | Created by Quynh Nguyen and Hayden Burgess</p>
+</footer>

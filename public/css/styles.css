@@ -1,0 +1,166 @@
+/* CS 340 Project */
+/* Group #97: Hayden Burgess, Quynh Nguyen */
+/* Project Title: Tabletoppers Games */
+/* styles.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1, h3 {
+    color: #FF8C00;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  a {
+    color: #2196F3;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Navigation styles */
+  nav {
+    background-color: #1A237E;
+    padding: 15px;
+  }
+  
+  nav h1 {
+    color: #fff;
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin: 0;
+  }
+  
+  nav li {
+    margin: 0;
+  }
+  
+  nav a {
+    color: #fff;
+    padding: 5px 10px;
+    display: inline-block;
+  }
+  
+  /* Other styles */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #FF8C00;
+    color: #fff;
+  }
+  
+  input[type="submit"] {
+    background-color: #FF5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #E64A19;
+  }
+  
+  form {
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .logo {
+    width: 200px;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .centered-image {
+    padding: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  button {
+    background-color: #FF5722;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  button:hover {
+    background-color: #b7353f;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #4a7ab7;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 14px;
+  }

@@ -1,0 +1,104 @@
+{{!-- CS 340 Project --}}
+{{!-- Group #97: Hayden Burgess, Quynh Nguyen --}}
+{{!-- Project Title: Tabletoppers Games --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+{{!-- customers.hbs --}}
+
+{{!-- Using jQuery to send delete request --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabletoppers Games</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+        Tabletoppers Games
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+    </h1>
+
+
+    <ul style="display: inline;">
+        <a href='/'>Home</a>
+        <a href='/board_games'>Board Games</a>
+        <a href='/customers'>Customers</a>
+        <a href='/orders'>Orders</a>
+        <a href='/order_details'>Order Details</a>
+        <a href='/warehouses'>Warehouses</a>
+    </ul>
+
+<h3>Customers</h3>
+{{!-- Create a table --}}
+<table id="customer-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Street</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr data-value={{this.customer_id}}>
+            <td>{{this.customer_id}}</td>
+            <td>{{this.customer_first_name}}</td>
+            <td>{{this.customer_last_name}}</td>
+            <td>{{this.customer_email}}</td>
+            <td>{{this.customer_street}}</td>
+            <td>{{this.customer_state}}</td>
+            <td>{{this.customer_zipcode}}</td>
+            <td><button onclick="deleteCustomer({{this.customer_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add a customer to the table  --}}
+<h3>Add a Customer</h3>
+<p>To add a new customer, please enter the information below and click 'Add Customer'!</p>
+<form id="add-customer-form-ajax">
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" id="first_name" required>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" id="last_name" required>
+
+    <label for="customer_email">Email:</label>
+    <input type="email" name="customer_email" id="customer_email" required>
+    <br></br>
+    <label for="street">Street:</label>
+    <input type="text" name="street" id="street" required>
+
+    <label for="state">State:</label>
+    <input type="text" name="state" id="state" required>
+
+    <label for="zipcode">Zipcode:</label>
+    <input type="text" name="zipcode" id="zipcode" required>
+    <input type="submit" value="Add Customer">
+</form>
+
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_customer.js"></script>
+<script src="./js/delete_customer.js"></script>
+
+<footer>
+    <p>Tabletoppers Games &copy; 2023 | Created by Quynh Nguyen and Hayden Burgess</p>
+</footer>

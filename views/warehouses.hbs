@@ -1,0 +1,95 @@
+{{!-- CS 340 Project --}}
+{{!-- Group #97: Hayden Burgess, Quynh Nguyen --}}
+{{!-- Project Title: Tabletoppers Games --}}
+{{!-- warehouses.hbs --}}
+
+{{!-- Using jQuery to send delete request --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabletoppers Games</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+        Tabletoppers Games
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+    </h1>
+
+
+    <ul style="display: inline;">
+        <a href='/'>Home</a>
+        <a href='/board_games'>Board Games</a>
+        <a href='/customers'>Customers</a>
+        <a href='/orders'>Orders</a>
+        <a href='/order_details'>Order Details</a>
+        <a href='/warehouses'>Warehouses</a>
+    </ul>
+
+<h3>Warehouses</h3>
+{{!-- Create a table --}}
+<table id="warehouse-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Warehouse ID</th>
+            <th>Warehouse Location</th>
+            <th>Board Game ID</th>
+            <th>Quantity Stock</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.warehouse_id}}</td>
+            <td>{{this.warehouse_location}}</td>
+            <td>{{this.board_game_id}}</td>
+            <td>{{this.quantity_stock}}</td>
+            <td><button onclick="deleteWarehouse({{this.warehouse_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add a record to the table  --}}
+<h3>Add a Warehouse</h3>
+<p>To add a new warehouse, please enter the information below and click 'Add Warehouse'!</p>
+<form id="add-warehouse-form-ajax">
+    <label for="input_warehouse_location">Warehouse Location: </label>
+    <input type="text" name="input_warehouse_location" id="input_warehouse_location">
+    
+    <label for="board_game_id">Board Game ID: </label>
+    <select name="board_game_id" id="board_game_id">
+        <option value="test">Select a Board Game</option>
+        {{#each data}}
+        <option value="{{this.board_game_id}}">{{this.board_game_id}}</option>
+        {{/each}}
+        <option value="null">None</option>
+    </select>
+
+    <label for="quantity_stock">Quantity in Stock:  </label>
+    <input type="number" name="quantity_stock" id="quantity_stock">
+
+    <input type="submit" value="Add Warehouse">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_warehouse.js"></script>
+<script src="./js/delete_warehouse.js"></script>
+
+<footer>
+    <p>Tabletoppers Games &copy; 2023 | Created by Quynh Nguyen and Hayden Burgess</p>
+</footer>

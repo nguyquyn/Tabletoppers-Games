@@ -1,0 +1,84 @@
+{{!-- CS 340 Project --}}
+{{!-- Group #97: Hayden Burgess, Quynh Nguyen --}}
+{{!-- Project Title: Tabletoppers Games --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+{{!-- order_details.hbs --}}
+
+{{!-- Using jQuery to send delete request --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabletoppers Games</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+        Tabletoppers Games
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+    </h1>
+
+    <ul style="display: inline;">
+        <a href='/'>Home</a>
+        <a href='/board_games'>Board Games</a>
+        <a href='/customers'>Customers</a>
+        <a href='/orders'>Orders</a>
+        <a href='/order_details'>Order Details</a>
+        <a href='/warehouses'>Warehouses</a>
+    </ul>
+
+<h3>Order Details</h3>
+{{!-- Create a table --}}
+<table id="order-details-table">
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Order ID</th>
+            <th>Board Game ID</th>
+            <th>Quantity Ordered</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr>
+            <td>{{this.order_id}}</td>
+            <td>{{this.board_game_id}}</td>
+            <td>{{this.quantity_ordered}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add order details to the table  --}}
+<h3>Add Order Details</h3>
+<p>To add new order details, please select an order and enter the information below and click 'Add Order Details'!</p>
+<form id="add-order-details-form-ajax">
+    <label for="order_id">Order ID:</label>
+    <input type="number" name="order_id" id="order_id" required>
+
+    <label for="board_game_id">Board Game ID:</label>
+    <input type="number" name="board_game_id" id="board_game_id" required>
+
+    <label for="quantity_ordered">Quantity Ordered:</label>
+    <input type="number" name="quantity_ordered" id="quantity_ordered" required>
+    
+    <input type="submit" value="Add Order Details">
+</form>
+
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_order_details.js"></script>
+
+<footer>
+    <p>Tabletoppers Games &copy; 2023 | Created by Quynh Nguyen and Hayden Burgess</p>
+</footer>

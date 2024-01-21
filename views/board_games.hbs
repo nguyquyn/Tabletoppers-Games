@@ -1,0 +1,110 @@
+{{!-- CS 340 Project --}}
+{{!-- Group #97: Hayden Burgess, Quynh Nguyen --}}
+{{!-- Project Title: Tabletoppers Games --}}
+{{!-- Citation: https://github.com/osu-cs340-ecampus/nodejs-starter-app --}}
+{{!-- board_games.hbs --}}
+
+{{!-- Using jQuery to send delete request --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabletoppers Games</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+        Tabletoppers Games
+        <img src="./img/logo.png" alt="Tabletoppers Games Logo" style="width: 30px;">
+    </h1>
+
+    <ul style="display: inline;">
+        <a href='/'>Home</a>
+        <a href='/board_games'>Board Games</a>
+        <a href='/customers'>Customers</a>
+        <a href='/orders'>Orders</a>
+        <a href='/order_details'>Order Details</a>
+        <a href='/warehouses'>Warehouses</a>
+        <p></p>
+    </ul>
+
+<h3>Board Games</h3>
+
+{{!-- Create a table --}}
+<table id="board-game-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Board Game ID</th>
+            <th>Board Game Name</th>
+            <th>Board Game Price</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{#each data}}
+        <tr data-value={{this.board_game_id}}>
+            <td>{{this.board_game_id}}</td>
+            <td>{{this.board_game_name}}</td>
+            <td>{{this.board_game_price}}</td>
+            <td><button onclick="deleteBoardGame({{this.board_game_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+{{!-- Form to add a record to the table  --}}
+<h3>Add a Board Game</h3>
+<p>To add a new board game, please enter the information below and click 'Add Board Game'!</p>
+<p>**Please make sure to only input $1+ for price or else the board game will not be added.</p>
+<form id="add-board-game-form-ajax">
+    <label for="name">Board Game Name: </label>
+    <input type="text" name="name" id="name">
+    
+    <label for="price">Price: </label>
+    <input type="number" name="price" id="price">
+
+    <input type="submit" value="Add Board Game">
+</form>
+
+{{!-- Form to update a record to the table  --}}
+<h3>Update a Board Game</h3>
+<p>To update a board game, select the board game from drop-down menu on the left and input the new price. Then click 'Update Board Game'!</p>
+<form id="update-board-game-form-ajax">
+
+    <label for="board_game_name">Board Game Name: </label>
+    <select name="board_game_name" id="board_game_name">
+        <option value="test">Select a Board Game</option>
+        {{#each data}}
+        <option value="{{this.board_game_id}}">{{this.board_game_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="board_game_price">Price: </label>
+    <input type="number" name="board_game_price" id="board_game_price" required>
+
+    <input type="submit" value="Update Board Game">
+
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_board_game.js"></script>
+<script src="./js/delete_board_game.js"></script>
+<script src="./js/update_board_game.js"></script>
+
+<footer>
+    <p>Tabletoppers Games &copy; 2023 | Created by Quynh Nguyen and Hayden Burgess</p>
+</footer>
+</body>
