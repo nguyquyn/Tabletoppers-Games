@@ -11,7 +11,7 @@ How to Run:
 ```
 
 ## Description:
-Portfolio Project for Oregon State University CS 340: Introduction to Databases. It is a web-based interface that uses a MySQL/MariaDB driven database back end with Create, Read, Update, and Delete (CRUD) functionalities. This is implemented using MySQL/MariaDB, Node.js, Express, and JavaScript.
+Portfolio Project for Oregon State University CS 340: Introduction to Databases. It is a web-based interface that uses a MySQL/MariaDB driven database back end with Create, Read, Update, and Delete (CRUD) functionalities. This is implemented using MySQL/MariaDB, Node.js, Express, Handlebars, and JavaScript.
 
 ## Project Outline:
 Tabletoppers Games is an online e-commerce website committed to providing fun for their customers’ friends and family through board games. They sell a wide variety of board games with over 6,000 sales annually and generate about $450,000 in revenue. Their e-commerce site is exponentially growing and requires a database that is able to handle at least 10,000 sales if needed. Their business has expanded into four different warehouses and each warehouse can hold one specific board game. The database will be able to handle the relationships between their many customers and their orders. This includes tracking customers, their orders, the order details, the different board games, and warehouses. This will assist them in understanding which board games are more popular among customers and develop more enjoyable games for everyone!
