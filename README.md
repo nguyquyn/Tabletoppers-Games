@@ -3,7 +3,7 @@
 How to Run:
 
 1. Login to https://teach.engr.oregonstate.edu/ to enable account on flip servers
-1. Establish SSH session with with flip3 server
+1. Establish SSH session with any of the three flip servers
 1. Connect to OSU VPN
 2. Login to http://classmysql.engr.oregonstate.edu/
 3. Import SQL file into database
